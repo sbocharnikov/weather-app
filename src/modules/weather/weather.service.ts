@@ -1,29 +1,28 @@
 import { HttpService } from '@nestjs/axios';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { AxiosResponse } from 'axios';
-import { firstValueFrom, Observable } from 'rxjs';
+import { firstValueFrom } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { WeatherData } from './dto/weatherData.interface';
-import { Weather } from './dto/weather.interface';
+import { Weather } from 'src/dto/weather.interface';
+import { WeatherData } from 'src/dto/weatherData.interface';
 
 @Injectable()
-export class AppService {
-  constructor(private configService: ConfigService,
-    private readonly httpService: HttpService) {}
-
-  getHello(): string {
-    return 'Hello World!';
-  }
+export class WeatherService {
+  constructor(
+    private configService: ConfigService,
+    private readonly httpService: HttpService,
+  ) {}
 
   async getWeather(city: string): Promise<Weather> {
     const key = this.configService.get<string>('WEATHERAPI_KEY');
     const url = `http://api.weatherapi.com/v1/current.json?key=${key}&q=${city}`;
-    const response = await firstValueFrom(this.httpService.get<WeatherData>(url).pipe(
-      catchError(() => {
-        throw new HttpException('City not found', HttpStatus.NOT_FOUND);
-      }),
-    ));
+    const response = await firstValueFrom(
+      this.httpService.get<WeatherData>(url).pipe(
+        catchError(() => {
+          throw new HttpException('City not found', HttpStatus.NOT_FOUND);
+        }),
+      ),
+    );
 
     return this.toWeatherDto(response.data);
   }
