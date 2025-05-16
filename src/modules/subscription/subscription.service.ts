@@ -52,7 +52,7 @@ export class SubscriptionService {
     }
 
     subscription.confirmed = true;
-    await this.subscriptionRepository.save(subscription);
+    await this.subscriptionRepository.update(subscription.id, subscription);
   }
 
   async unsubscribe(token: string): Promise<void> {
