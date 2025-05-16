@@ -1,6 +1,6 @@
 import { Body, Controller, HttpCode, Post } from '@nestjs/common';
 import { SubscriptionService } from './subscription.service';
-import { CreateSubscriptionDto } from 'src/dto/createSubscription.dto';
+import { CreateSubscriptionDto } from 'src/modules/subscription/dto/createSubscription.dto';
 import { HttpStatusCode } from 'axios';
 
 @Controller()
@@ -12,7 +12,7 @@ export class SubscriptionController {
   async createSubscription(
     @Body() createSubscriptionDto: CreateSubscriptionDto,
   ): Promise<string> {
-    console.log(createSubscriptionDto);
+    console.log(1);
 
     await this.subscriptionService.createSubscription(createSubscriptionDto);
 

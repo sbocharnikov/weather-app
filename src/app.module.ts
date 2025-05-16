@@ -3,7 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { WeatherModule } from './modules/weather/weather.module';
 import { SubscriptionModule } from './modules/subscription/subscription.module';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { UserModule } from './user/user.module';
+import { UserModule } from './modules/user/user.module';
 import typeorm from './config/typeorm';
 
 @Module({

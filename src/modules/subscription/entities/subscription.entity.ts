@@ -1,6 +1,6 @@
-import { User } from 'src/user/entities/user.entity';
+import { User } from 'src/modules/user/entities/user.entity';
 import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { SubscriptionFrequency } from './subscription-frequency.enum';
+import { SubscriptionFrequency } from '../subscription-frequency.enum';
 
 @Entity()
 export class Subscription {

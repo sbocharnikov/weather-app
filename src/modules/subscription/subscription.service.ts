@@ -1,9 +1,9 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreateSubscriptionDto } from 'src/dto/createSubscription.dto';
-import { Subscription } from './subscription.entity';
+import { CreateSubscriptionDto } from 'src/modules/subscription/dto/createSubscription.dto';
+import { Subscription } from './entities/subscription.entity';
 import { Repository } from 'typeorm';
-import { UserService } from 'src/user/user.service';
+import { UserService } from 'src/modules/user/user.service';
 import { randomUUID } from 'node:crypto';
 
 @Injectable()
@@ -17,6 +17,7 @@ export class SubscriptionService {
   async createSubscription(
     createSubscriptionDto: CreateSubscriptionDto,
   ): Promise<void> {
+    console.log(2);
     const { email } = createSubscriptionDto;
     let user = await this.userService.getByEmail(email);
 
@@ -35,5 +36,7 @@ export class SubscriptionService {
     });
 
     await this.subscriptionRepository.save(subscription);
+
+    console.log(3);
   }
 }

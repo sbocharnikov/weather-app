@@ -1,4 +1,4 @@
-export interface WeatherResponseDto {
+export class WeatherResponseDto {
   temperature: number;
   humidity: number;
   description: string;

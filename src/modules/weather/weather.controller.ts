@@ -6,7 +6,7 @@ import {
   Query,
 } from '@nestjs/common';
 import { WeatherService } from './weather.service';
-import { WeatherResponseDto } from 'src/dto/weather.interface';
+import { WeatherResponseDto } from 'src/modules/weather/dto/weatherResponse.dto';
 
 @Controller('weather')
 export class WeatherController {

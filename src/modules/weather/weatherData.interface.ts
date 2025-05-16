@@ -51,4 +51,3 @@ export interface WeatherData {
   location: WeatherLocation;
   current: CurrentWeather;
 }
-

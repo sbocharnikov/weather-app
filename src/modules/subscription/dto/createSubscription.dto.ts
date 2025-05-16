@@ -11,4 +11,3 @@ export class CreateSubscriptionDto {
   @IsEnum(SubscriptionFrequency)
   frequency: SubscriptionFrequency;
 }
-    

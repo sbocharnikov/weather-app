@@ -3,8 +3,8 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { firstValueFrom } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { WeatherData } from './dto/weatherData.interface';
-import { WeatherResponseDto } from './dto/weather.interface';
+import { WeatherData } from './modules/weather/weatherData.interface';
+import { WeatherResponseDto } from './modules/weather/dto/weatherResponse.dto';
 
 @Injectable()
 export class AppService {
