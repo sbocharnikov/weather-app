@@ -1,5 +1,5 @@
-export interface Weather {
-    temperature: number;
-    humidity: number;
-    description: string;
+export interface WeatherResponseDto {
+  temperature: number;
+  humidity: number;
+  description: string;
 }
