@@ -5,6 +5,7 @@ import { Subscription } from './entities/subscription.entity';
 import { Repository } from 'typeorm';
 import { UserService } from 'src/modules/user/user.service';
 import { randomUUID } from 'node:crypto';
+import { isUUID } from 'class-validator';
 
 @Injectable()
 export class SubscriptionService {
@@ -34,6 +35,23 @@ export class SubscriptionService {
       token,
     });
 
+    await this.subscriptionRepository.save(subscription);
+  }
+
+  async confirmSubscription(token: string): Promise<void> {
+    if (!isUUID(token)) {
+      throw new HttpException('Invalid token', HttpStatus.BAD_REQUEST);
+    }
+
+    const subscription = await this.subscriptionRepository.findOne({
+      where: { token },
+    });
+
+    if (!subscription) {
+      throw new HttpException('Token not found', HttpStatus.NOT_FOUND);
+    }
+
+    subscription.isVerified = true;
     await this.subscriptionRepository.save(subscription);
   }
 }

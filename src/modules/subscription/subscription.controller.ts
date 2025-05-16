@@ -1,4 +1,4 @@
-import { Body, Controller, HttpCode, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, Param, Post } from '@nestjs/common';
 import { SubscriptionService } from './subscription.service';
 import { CreateSubscriptionDto } from 'src/modules/subscription/dto/createSubscription.dto';
 import { HttpStatusCode } from 'axios';
@@ -15,5 +15,12 @@ export class SubscriptionController {
     await this.subscriptionService.createSubscription(createSubscriptionDto);
 
     return 'Subscription successful. Confirmation email sent.';
+  }
+
+  @Get('confirm/:token')
+  async confirmSubscription(@Param('token') token: string) {
+    await this.subscriptionService.confirmSubscription(token);
+
+    return 'Subscription confirmed successfully.';
   }
 }
