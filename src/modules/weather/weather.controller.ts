@@ -6,14 +6,14 @@ import {
   Query,
 } from '@nestjs/common';
 import { WeatherService } from './weather.service';
-import { Weather } from 'src/dto/weather.interface';
+import { WeatherResponseDto } from 'src/dto/weather.interface';
 
 @Controller('weather')
 export class WeatherController {
   constructor(private readonly weatherService: WeatherService) {}
 
   @Get()
-  async getWeather(@Query('city') city: string): Promise<Weather> {
+  async getWeather(@Query('city') city: string): Promise<WeatherResponseDto> {
     if (!city) {
       throw new HttpException('Invalid request', HttpStatus.BAD_REQUEST);
     }

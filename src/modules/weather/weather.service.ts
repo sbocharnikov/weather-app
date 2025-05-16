@@ -3,7 +3,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { firstValueFrom } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Weather } from 'src/dto/weather.interface';
+import { WeatherResponseDto } from 'src/dto/weather.interface';
 import { WeatherData } from 'src/dto/weatherData.interface';
 
 @Injectable()
@@ -13,7 +13,7 @@ export class WeatherService {
     private readonly httpService: HttpService,
   ) {}
 
-  async getWeather(city: string): Promise<Weather> {
+  async getWeather(city: string): Promise<WeatherResponseDto> {
     const key = this.configService.get<string>('WEATHERAPI_KEY');
     const url = `http://api.weatherapi.com/v1/current.json?key=${key}&q=${city}`;
     const response = await firstValueFrom(
@@ -27,7 +27,7 @@ export class WeatherService {
     return this.toWeatherDto(response.data);
   }
 
-  toWeatherDto(data: WeatherData): Weather {
+  toWeatherDto(data: WeatherData): WeatherResponseDto {
     return {
       temperature: data.current.temp_c,
       humidity: data.current.humidity,
