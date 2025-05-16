@@ -17,7 +17,6 @@ export class SubscriptionService {
   async createSubscription(
     createSubscriptionDto: CreateSubscriptionDto,
   ): Promise<void> {
-    console.log(2);
     const { email } = createSubscriptionDto;
     let user = await this.userService.getByEmail(email);
 
@@ -36,7 +35,5 @@ export class SubscriptionService {
     });
 
     await this.subscriptionRepository.save(subscription);
-
-    console.log(3);
   }
 }

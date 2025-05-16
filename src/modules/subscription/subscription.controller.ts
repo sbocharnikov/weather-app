@@ -12,8 +12,6 @@ export class SubscriptionController {
   async createSubscription(
     @Body() createSubscriptionDto: CreateSubscriptionDto,
   ): Promise<string> {
-    console.log(1);
-
     await this.subscriptionService.createSubscription(createSubscriptionDto);
 
     return 'Subscription successful. Confirmation email sent.';
