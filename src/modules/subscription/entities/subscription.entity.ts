@@ -4,8 +4,8 @@ import { SubscriptionFrequency } from '../subscription-frequency.enum';
 
 @Entity()
 export class Subscription {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
 
   @OneToOne(() => User, (user) => user.subscription)
   user: User;
@@ -23,5 +23,5 @@ export class Subscription {
   token: string;
 
   @Column({ default: false })
-  isVerified: boolean;
+  confirmed: boolean;
 }

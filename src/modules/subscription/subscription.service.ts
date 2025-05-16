@@ -51,7 +51,25 @@ export class SubscriptionService {
       throw new HttpException('Token not found', HttpStatus.NOT_FOUND);
     }
 
-    subscription.isVerified = true;
+    subscription.confirmed = true;
     await this.subscriptionRepository.save(subscription);
+  }
+
+  async unsubscribe(token: string): Promise<void> {
+    if (!isUUID(token)) {
+      throw new HttpException('Invalid token', HttpStatus.BAD_REQUEST);
+    }
+
+    const subscription = await this.subscriptionRepository.findOne({
+      where: { token },
+      relations: ['user'],
+    });
+
+    if (!subscription) {
+      throw new HttpException('Token not found', HttpStatus.NOT_FOUND);
+    }
+
+    await this.userService.deleteUser(subscription.user.id);
+    await this.subscriptionRepository.delete(subscription.id);
   }
 }

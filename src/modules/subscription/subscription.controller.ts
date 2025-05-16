@@ -21,6 +21,13 @@ export class SubscriptionController {
   async confirmSubscription(@Param('token') token: string) {
     await this.subscriptionService.confirmSubscription(token);
 
-    return 'Subscription confirmed successfully.';
+    return 'Subscription confirmed successfully';
+  }
+
+  @Get('unsubscribe/:token')
+  async unsubscribe(@Param('token') token: string) {
+    await this.subscriptionService.unsubscribe(token);
+
+    return 'Unsubscribed successfully';
   }
 }
