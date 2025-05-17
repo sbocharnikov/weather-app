@@ -6,11 +6,11 @@ dotenvConfig({ path: '.env' });
 
 const config = {
   type: 'postgres',
-  host: process.env.DATABASE_HOST,
+  host: 'db',
   port: parseInt(process.env.DATABASE_PORT || '5432', 10),
-  username: process.env.DATABASE_USERNAME,
-  password: process.env.DATABASE_PASSWORD,
-  database: process.env.DATABASE_NAME,
+  username: 'postgres',
+  password: 'postgres',
+  database: 'postgres',
   entities: ['dist/**/*.entity{.ts,.js}'],
   migrations: ['dist/migrations/*{.ts,.js}'],
   synchronize: false,
