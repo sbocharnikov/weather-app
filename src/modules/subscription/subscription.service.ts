@@ -1,9 +1,9 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreateSubscriptionDto } from 'src/modules/subscription/dto/createSubscription.dto';
+import { CreateSubscriptionDto } from './dto/createSubscription.dto';
 import { Subscription } from './entities/subscription.entity';
 import { Repository } from 'typeorm';
-import { UserService } from 'src/modules/user/user.service';
+import { UserService } from '../user/user.service';
 import { randomUUID } from 'node:crypto';
 import { isUUID } from 'class-validator';
 

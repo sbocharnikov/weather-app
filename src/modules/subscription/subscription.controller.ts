@@ -1,6 +1,6 @@
 import { Body, Controller, Get, HttpCode, Param, Post } from '@nestjs/common';
 import { SubscriptionService } from './subscription.service';
-import { CreateSubscriptionDto } from 'src/modules/subscription/dto/createSubscription.dto';
+import { CreateSubscriptionDto } from './dto/createSubscription.dto';
 import { HttpStatusCode } from 'axios';
 
 @Controller()

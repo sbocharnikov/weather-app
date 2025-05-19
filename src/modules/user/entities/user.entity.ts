@@ -1,4 +1,4 @@
-import { Subscription } from 'src/modules/subscription/entities/subscription.entity';
+import { Subscription } from '../../subscription/entities/subscription.entity';
 import {
   Entity,
   PrimaryGeneratedColumn,
