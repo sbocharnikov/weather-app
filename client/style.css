@@ -1,0 +1,18 @@
+.form {
+    display: table;
+  }
+  
+ .form-field {
+    display: table-row;
+  }
+  
+  label,
+  input,
+  select {
+    display: table-cell;
+    margin-bottom: 10px;
+  }
+  
+  label {
+    padding-right: 10px;
+  }

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Weather App</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>Subscribe to weather updates</h1>
+        <form method="POST" action="/api/subscribe" class="form">
+            <div class="form-field">
+                <label for="email">Enter your email: </label>
+                <input type="email" name="email" id="email" required
+                    pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
+            </div>
+            <div class="form-field">
+                <label for="city">Enter city: </label>
+                <input type="text" name="city" id="city" required>
+            </div>
+            <div class="form-field">
+                <label for="frequency">Select frequency: </label>
+                <select name="frequency" id="frequency">
+                    <option value="daily">Daily</option>
+                    <option value="hourly">Hourly</option>
+                </select>
+            </div>
+            <div class="form-field">
+                <button type="submit">Subscribe</button>
+            </div>
+        </form>
+    </body>
+</html>
