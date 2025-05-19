@@ -15,7 +15,7 @@ If the service is not available then please wait for 50 seconds or more and try 
 
 To run the app localy:
 - pull the repository
-- download .env file from <a href="https://drive.google.com/file/d/1suHPSdqPsV7tXcNdx37g4lhAjFkYrv7v/view?usp=sharing">here</a> and put it to the app folder root
+- download `.env` file from <a href="https://drive.google.com/file/d/1suHPSdqPsV7tXcNdx37g4lhAjFkYrv7v/view?usp=sharing">here</a> and put it to the app folder root
 - run command
 ```bash
 docker compose up
