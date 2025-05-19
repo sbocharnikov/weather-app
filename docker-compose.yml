@@ -25,10 +25,3 @@ services:
     volumes:
       - ./pgdata:/var/lib/postgresql/data
     container_name: postgres  
-
-  migrations:
-    build: 
-      context: .
-    command: ['npm', 'run', 'migration:run']
-    depends_on:
-      - db

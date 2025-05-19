@@ -15,7 +15,9 @@ export class WeatherService {
 
   async getWeather(city: string): Promise<WeatherResponseDto> {
     const key = this.configService.get<string>('WEATHERAPI_KEY');
-    const url = `http://api.weatherapi.com/v1/current.json?key=${key}&q=${city}`;
+    const url =
+      this.configService.get<string>('WEATHERAPI_URL') +
+      `/current.json?key=${key}&q=${city}`;
     const response = await firstValueFrom(
       this.httpService.get<WeatherData>(url).pipe(
         catchError(() => {
